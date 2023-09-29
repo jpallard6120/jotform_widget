@@ -19,18 +19,11 @@
             console.log('Jotform Widget is ready')
             var page = JFCustomWidget.getWidgetSetting('page');
             console.log('Page is: ', page)
-        //subscribe to form submit event
-        JFCustomWidget.subscribe("submit", function(event){
-            console.log('Submit event is: ', event)
-                // var msg = {
-                //     //you should valid attribute to data for JotForm
-                //     //to be able to use youw widget as required
-                //     valid: true,
-                //     value: event
-                // }
-                // // send value to JotForm
-                // JFCustomWidget.sendSubmit(msg);
-            });
+            window.top.postMessage({
+                'event_name': 'form_page_visible',
+                'page': page
+                }, 
+                'https://ent-nts.ca');
         });
     </script>
     </body>
