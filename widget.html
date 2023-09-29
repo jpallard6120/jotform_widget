@@ -1,18 +1,57 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
-    </head>
-    <body>
-        <div id="main">
-            <h3>This is my first widget.</h3>
-        </div>
-        <script type="text/javascript">
-            //always subscribe to ready event and implement widget related code
-            //inside callback function , it is the best practice while developing widgets
-            JFCustomWidget.subscribe("ready", function(){
-                console.log('Widget Ready Yay')
-            });
-        </script>
-    </body>
-</html>
+<html data-lt-installed="true"><head>
+    <link rel="stylesheet" href="//js.jotform.com/vendor/drawingboard/drawingboard.css" type="text/css" media="all">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//js.jotform.com/vendor/drawingboard/drawingboard.min.js"></script>
+
+    <!--inlcude JotFormCustom widget script-->
+    <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
+    <!--drawing board container style, remember this will be an iframe in form-->
+    <style type="text/css">
+        #board {
+            width: 615px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body style="zoom: 1;" class="clickup-chrome-ext_installed">
+    <div id="board" class="drawing-board" style="width: 617px; height: 335px;"><div class="drawing-board-controls" data-align="left"><div class="drawing-board-control drawing-board-control-colors"><div class="drawing-board-control-inner"><div class="drawing-board-control-colors-current" style="background-color: #000000" data-color="#000000"></div><div class="drawing-board-control-colors-rainbows drawing-board-utils-hidden"><div class="drawing-board-control-colors-rainbow"><div class="drawing-board-control-colors-picker" data-color="rgba(255, 255, 255, 1)" style="background-color: rgba(255, 255, 255, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 127, 254, 1)" style="background-color: rgba(255, 127, 254, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 127, 191, 1)" style="background-color: rgba(255, 127, 191, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 127, 127, 1)" style="background-color: rgba(255, 127, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 191, 127, 1)" style="background-color: rgba(255, 191, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(254, 255, 127, 1)" style="background-color: rgba(254, 255, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(191, 255, 127, 1)" style="background-color: rgba(191, 255, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 255, 127, 1)" style="background-color: rgba(127, 255, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 255, 191, 1)" style="background-color: rgba(127, 255, 191, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 254, 255, 1)" style="background-color: rgba(127, 254, 255, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 191, 255, 1)" style="background-color: rgba(127, 191, 255, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 127, 255, 1)" style="background-color: rgba(127, 127, 255, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(191, 127, 255, 1)" style="background-color: rgba(191, 127, 255, 1)"></div></div><div class="drawing-board-control-colors-rainbow"><div class="drawing-board-control-colors-picker" data-color="rgba(150, 150, 150, 1)" style="background-color: rgba(150, 150, 150, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 0, 254, 1)" style="background-color: rgba(255, 0, 254, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 0, 127, 1)" style="background-color: rgba(255, 0, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 0, 0, 1)" style="background-color: rgba(255, 0, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(255, 127, 0, 1)" style="background-color: rgba(255, 127, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(254, 255, 0, 1)" style="background-color: rgba(254, 255, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 255, 0, 1)" style="background-color: rgba(127, 255, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 255, 0, 1)" style="background-color: rgba(0, 255, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 255, 127, 1)" style="background-color: rgba(0, 255, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 254, 255, 1)" style="background-color: rgba(0, 254, 255, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 127, 255, 1)" style="background-color: rgba(0, 127, 255, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 0, 255, 1)" style="background-color: rgba(0, 0, 255, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 0, 255, 1)" style="background-color: rgba(127, 0, 255, 1)"></div></div><div class="drawing-board-control-colors-rainbow"><div class="drawing-board-control-colors-picker" data-color="rgba(0, 0, 0, 1)" style="background-color: rgba(0, 0, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 0, 127, 1)" style="background-color: rgba(127, 0, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 0, 63, 1)" style="background-color: rgba(127, 0, 63, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 0, 0, 1)" style="background-color: rgba(127, 0, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 63, 0, 1)" style="background-color: rgba(127, 63, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(127, 127, 0, 1)" style="background-color: rgba(127, 127, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(63, 127, 0, 1)" style="background-color: rgba(63, 127, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 127, 0, 1)" style="background-color: rgba(0, 127, 0, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 127, 63, 1)" style="background-color: rgba(0, 127, 63, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 127, 127, 1)" style="background-color: rgba(0, 127, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 63, 127, 1)" style="background-color: rgba(0, 63, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(0, 0, 127, 1)" style="background-color: rgba(0, 0, 127, 1)"></div><div class="drawing-board-control-colors-picker" data-color="rgba(63, 0, 127, 1)" style="background-color: rgba(63, 0, 127, 1)"></div></div></div></div></div><div class="drawing-board-control drawing-board-control-size" data-drawing-board-type="dropdown"><div class="drawing-board-control-inner" title="1"><div class="drawing-board-control-size-dropdown-current"><span style="width: 1px; height: 1px; border-radius: 1px; margin-left: -0.5px; margin-top: -0.5px;"></span></div><ul class="drawing-board-control-size-dropdown drawing-board-utils-hidden"><li data-size="1"><span style="width: 1px; height: 1px; border-radius: 1px;"></span></li><li data-size="3"><span style="width: 3px; height: 3px; border-radius: 3px;"></span></li><li data-size="6"><span style="width: 6px; height: 6px; border-radius: 6px;"></span></li><li data-size="10"><span style="width: 10px; height: 10px; border-radius: 10px;"></span></li><li data-size="20"><span style="width: 20px; height: 20px; border-radius: 20px;"></span></li><li data-size="30"><span style="width: 30px; height: 30px; border-radius: 30px;"></span></li><li data-size="40"><span style="width: 40px; height: 40px; border-radius: 40px;"></span></li><li data-size="50"><span style="width: 50px; height: 50px; border-radius: 50px;"></span></li></ul></div></div><div class="drawing-board-control drawing-board-control-drawingmode"><button class="drawing-board-control-drawingmode-pencil-button active" data-mode="pencil"></button><button class="drawing-board-control-drawingmode-eraser-button" data-mode="eraser"></button></div><div class="drawing-board-control drawing-board-control-navigation"><button class="drawing-board-control-navigation-back">←</button><button class="drawing-board-control-navigation-forward" disabled="disabled">→</button><button class="drawing-board-control-navigation-reset">×</button></div><div class="drawing-board-control drawing-board-control-download"><button class="drawing-board-control-download-button"></button></div></div><div class="drawing-board-canvas-wrapper" style="width: 615px; height: 300px;"><canvas class="drawing-board-canvas" width="615" height="300" style="width: 615px; height: 300px;"></canvas><div class="drawing-board-cursor drawing-board-utils-hidden"></div></div></div>
+    <script>
+        var myBoard = new DrawingBoard.Board('board', {
+            controls: [
+                'Color',
+                { Size: { type: 'dropdown' } },
+                { DrawingMode: { filler: false } },
+                'Navigation',
+                'Download'
+            ],
+            size: 1,
+            webStorage: false,
+            enlargeYourContainer: true
+        });
+
+        var valid = false;
+        //setting valid if drawing board clicked
+        //determining valid is important
+        $("#board").click(function(){
+            valid = true;
+        });
+
+        //subscrive to ready
+        JFCustomWidget.subscribe("ready", function(msg){
+            console.log("ready message arrived from JotForm", msg);
+        });
+
+        //subscribe to submit
+        JFCustomWidget.subscribe("submit", function(msg) {
+            var data ={
+                value: myBoard.canvas.toDataURL("image/png"),
+                //if you dont send valid data or send it true for every submit
+                //your widget cannot be make required
+                valid: valid
+            }
+            JFCustomWidget.sendResult(data);
+        });
+    </script>        
+
+</body></html>
