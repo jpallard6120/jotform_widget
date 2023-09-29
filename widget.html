@@ -9,12 +9,16 @@
         </style> -->
     </head>
     <body>
-        This is a widget
+        <div id="main">
+            <h3>This is a widget</h3>
+        </div>
     <script type="text/javascript">
         //always subscribe to ready event and implement widget related code
         //inside callback function , it is the best practice while developing widgets
         JFCustomWidget.subscribe("ready", function(event){
             console.log('Jotform Widget is ready')
+            var page = JFCustomWidget.getWidgetSetting('page');
+            console.log('Page is: ', page)
         //subscribe to form submit event
         JFCustomWidget.subscribe("submit", function(event){
             console.log('Submit event is: ', event)
