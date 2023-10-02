@@ -36,10 +36,8 @@
                         'formName': widgetSettings.formName,
                         'page': 'form_completed'
                     }
-                    JFCustomWidget.sendSubmit(submitData).then(function() {
-                        console.log('Submit successful promise triggered!')
-                        console.log('data is: ', submitData)
-                    });
+                    JFCustomWidget.sendSubmit(submitData)
+                    debugger
                 });
             });
             
