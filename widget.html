@@ -17,10 +17,13 @@
         //inside callback function , it is the best practice while developing widgets
         JFCustomWidget.subscribe("ready", function(event){
             console.log('Jotform Widget is ready')
-            var page = JFCustomWidget.getWidgetSetting('page');
+            const page = JFCustomWidget.getWidgetSetting('page');
+            const formName = JFCustomWidget.getWidgetSetting('formName');
+            console.log('formName is: ', formName)
             console.log('Page is: ', page)
             window.top.postMessage({
                 'event_name': 'form_page_visible',
+                'formName': formName,
                 'page': page
                 }, 
                 'https://ent-nts.ca');

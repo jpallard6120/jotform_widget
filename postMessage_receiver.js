@@ -8,6 +8,7 @@ window.addEventListener('message', (event) => {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 event: event.data.event_name,
+                formName: event.data.formName,
                 page: event.data.page
             });
         }
