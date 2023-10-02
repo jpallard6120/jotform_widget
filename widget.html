@@ -17,22 +17,29 @@
         //inside callback function , it is the best practice while developing widgets
         JFCustomWidget.subscribe("ready", function(event){
             console.log('Jotform Widget is ready')
-            JFCustomWidget.subscribe("submit", function(event){
-                console.log('This is a submit event!')
-                JFCustomWidget.sendSubmit({valid: true});  //This is required to pass submit validation
-                const page = JFCustomWidget.getWidgetSetting('page');
-                const formName = JFCustomWidget.getWidgetSetting('formName');
+            const widgetSettings = JFCustomWidget.getWidgetSettings()
                 console.log('Event data is: ', event)
-                console.log('formName is: ', formName)
-                console.log('Page is: ', page)
+                console.log('formName is: ', widgetSettings.formName)
+                console.log('Page is: ', widgetSettings.page)
                 window.top.postMessage({
                     'event_name': 'form_page_visible',
-                    'formName': formName,
-                    'page': page
+                    'formName': widgetSettings.formName,
+                    'page': widgetSettings.page
                 }, 
                 'https://ent-nts.ca');
+
+                JFCustomWidget.subscribe("submit", function(event){
+                    console.log('This is a submit event!')
+                    const submitData = {
+                        valid: true,
+                        'formName': formName
+                    }
+                    JFCustomWidget.sendSubmit(submitData, function() {
+                        console.log('Submit successful callback triggered!')
+                    });
+                });
             });
-        });
+            
     </script>
     </body>
 </html>
