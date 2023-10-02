@@ -29,6 +29,11 @@
                 'https://ent-nts.ca');
             JFCustomWidget.subscribe("submit", function(){
                 console.log('This is a submit event!')
+                var msg = {
+                        valid: true //This is required
+                    }
+                    // send value to JotForm
+                    JFCustomWidget.sendSubmit(msg);
             });
         });
     </script>
