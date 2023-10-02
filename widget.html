@@ -17,7 +17,7 @@
         //inside callback function , it is the best practice while developing widgets
         JFCustomWidget.subscribe("ready", function(event){
             console.log('Jotform Widget is ready')
-            const widgetSettings = JFCustomWidget.getWidgetSettings()
+            widgetSettings = JFCustomWidget.getWidgetSettings(); // No const here - need to be available in all contexts
                 console.log('Event data is: ', event)
                 console.log('formName is: ', widgetSettings.formName)
                 console.log('Page is: ', widgetSettings.page)
@@ -32,7 +32,7 @@
                     console.log('This is a submit event!')
                     const submitData = {
                         valid: true,
-                        'formName': formName
+                        'formName': widgetSettings.formName
                     }
                     JFCustomWidget.sendSubmit(submitData, function() {
                         console.log('Submit successful callback triggered!')
