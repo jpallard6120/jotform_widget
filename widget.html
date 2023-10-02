@@ -27,6 +27,9 @@
                 'page': page
                 }, 
                 'https://ent-nts.ca');
+            JFCustomWidget.subscribe("submit", function(){
+                console.log('This is a submit event!')
+            });
         });
     </script>
     </body>
