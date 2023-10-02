@@ -29,15 +29,10 @@
                 'https://ent-nts.ca');
 
                 JFCustomWidget.subscribe("submit", function(event){
-                    console.log('This is a submit event!')
                     const submitData = {
-                        valid: true,
-                        'event_name': 'form_page_visible',
-                        'formName': widgetSettings.formName,
-                        'page': 'form_completed'
+                        valid: true
                     }
                     JFCustomWidget.sendSubmit(submitData)
-                    debugger
                 });
             });
             
