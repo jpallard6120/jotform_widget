@@ -13,11 +13,12 @@
             <h3>This is a widget</h3>
         </div>
     <script type="text/javascript">
-        //always subscribe to ready event and implement widget related code
-        //inside callback function , it is the best practice while developing widgets
+        // Widget code that should fire when the widget is ready
+        let fired = 0 // Counting number of readies to make sure each event is sent only once
         JFCustomWidget.subscribe("ready", function(event){
-            console.log('Jotform Widget is ready')
-            widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
+            if (fired < 1) {
+                console.log('Jotform Widget is ready')
+                widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
                 console.log('Event data is: ', event)
                 console.log('formName is: ', widgetSettings.formName)
                 console.log('Page is: ', widgetSettings.page)
@@ -28,6 +29,11 @@
                 }, 
                 // 'https://ent-nts.ca');
                 '*'); //REMOVE THIS FOR PROD
+                fired += 1
+            };
+
+            
+            // Listening for messages sent to the widget context but not available in the top window
             window.addEventListener('message', (event) => {
                 console.log('Received message within widget:', event);
                 let dataType = {};
@@ -39,10 +45,8 @@
                     console.error('Failed to parse JSON:', error.message);
                     return
                 }
-                
-                console.log('data type: ', dataType) // Should be submit
-                console.log('data method: ', dataMethod) // Should be undefined - new pages have a method of "next". 
 
+                // Sending the message to the top window
                 if (event.origin == 'https://form.jotform.com' && dataType == 'submit' && typeof(dataMethod) == 'undefined') {
                     console.log('TRUE SUBMIT EVENT WOW')
                     console.log('event is: ', event)
