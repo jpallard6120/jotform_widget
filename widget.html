@@ -16,7 +16,6 @@
         // Widget code that should fire when the widget is ready
         JFCustomWidget.subscribe("ready", function(event){
             widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
-            if (!pagesFired.includes(widgetSettings.page)) {
                 console.log('Jotform Widget is ready')
                 console.log('Event data is: ', event)
                 console.log('formName is: ', widgetSettings.formName)
@@ -28,9 +27,7 @@
                 }, 
                 // 'https://ent-nts.ca');
                 '*'); //REMOVE THIS FOR PROD
-            };
 
-            
             // Listening for messages sent to the widget context but not available in the top window
             window.addEventListener('message', (event) => {
                 console.log('Received message within widget:', event);
@@ -55,7 +52,7 @@
                     }, 
                 // 'https://ent-nts.ca');
                 '*'); //REMOVE THIS FOR PROD
-                }
+                };
             });
         });
     </script>
