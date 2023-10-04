@@ -28,14 +28,11 @@
                 }, 
                 // 'https://ent-nts.ca');
                 '*'); //REMOVE THIS FOR PROD
-            });
-        JFCustomWidget.subscribe("submit", function(event){
-                const submitData = {
-                    valid: true
-                }
-                JFCustomWidget.sendSubmit(submitData)
+            window.addEventListener('message', (event) => {
+                console.log('Received message within widget:', event);
                 debugger
             });
+        });
     </script>
     </body>
 </html>
