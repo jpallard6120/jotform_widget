@@ -30,6 +30,7 @@
                 '*'); //REMOVE THIS FOR PROD
             window.addEventListener('message', (event) => {
                 console.log('Received message within widget:', event);
+                console.log('data type: ', event.data.type) // Should be submit
                 debugger
             });
         });
