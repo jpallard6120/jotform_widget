@@ -14,7 +14,7 @@
         </div>
     <script type="text/javascript">
         // Widget code that should fire when the widget is ready
-        let pagesFired = [] // Accumulating pages names to make sure we don't sent the same page twice
+        pagesFired = []; // Accumulating page names in global context to make sure we don't send the same page twice
         JFCustomWidget.subscribe("ready", function(event){
             widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
             if (!pagesFired.includes(widgetSettings.page)) {
