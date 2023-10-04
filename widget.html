@@ -17,7 +17,7 @@
         //inside callback function , it is the best practice while developing widgets
         JFCustomWidget.subscribe("ready", function(event){
             console.log('Jotform Widget is ready')
-            const widgetSettings = JFCustomWidget.getWidgetSettings();
+            widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
                 console.log('Event data is: ', event)
                 console.log('formName is: ', widgetSettings.formName)
                 console.log('Page is: ', widgetSettings.page)
@@ -37,7 +37,13 @@
                 if (event.origin == 'https://form.jotform.com' && dataType == 'submit' && typeof(dataMethod) == 'undefined') {
                     console.log('TRUE SUBMIT EVENT WOW')
                     console.log('event is: ', event)
-                    debugger
+                    window.top.postMessage({
+                        'event_name': 'form_submitted',
+                        'formName': widgetSettings.formName,
+                        'page': widgetSettings.page
+                    }, 
+                // 'https://ent-nts.ca');
+                '*'); //REMOVE THIS FOR PROD
                 }
             });
         });
