@@ -17,7 +17,7 @@
         //inside callback function , it is the best practice while developing widgets
         JFCustomWidget.subscribe("ready", function(event){
             console.log('Jotform Widget is ready')
-            widgetSettings = JFCustomWidget.getWidgetSettings(); // No const here - need to be available in all contexts
+            const widgetSettings = JFCustomWidget.getWidgetSettings();
                 console.log('Event data is: ', event)
                 console.log('formName is: ', widgetSettings.formName)
                 console.log('Page is: ', widgetSettings.page)
@@ -29,7 +29,13 @@
                 // 'https://ent-nts.ca');
                 '*'); //REMOVE THIS FOR PROD
             });
-            
+        JFCustomWidget.subscribe("submit", function(event){
+                const submitData = {
+                    valid: true
+                }
+                JFCustomWidget.sendSubmit(submitData)
+                debugger
+            });
     </script>
     </body>
 </html>
