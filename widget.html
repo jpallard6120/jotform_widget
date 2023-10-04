@@ -37,8 +37,8 @@
                     console.error('Failed to parse JSON:', error.message);
                     return
                 }
-                typeof(dataType) && console.log('data type: ', dataType) // Should be submit
-                typeof(dataMethod) && console.log('data method: ', dataMethod) // Should be undefined - new pages have a method of "next". 
+                typeof(dataType) != 'undefined' && console.log('data type: ', dataType) // Should be submit
+                typeof(dataMethod) != 'undefined' && console.log('data method: ', dataMethod) // Should be undefined - new pages have a method of "next". 
                 if (event.origin == 'https://form.jotform.com' && dataType == 'submit' && typeof(dataMethod) == 'undefined') {
                     console.log('TRUE SUBMIT EVENT WOW')
                     console.log('event is: ', event)
