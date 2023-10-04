@@ -14,11 +14,11 @@
         </div>
     <script type="text/javascript">
         // Widget code that should fire when the widget is ready
-        let fired = 0 // Counting number of readies to make sure each event is sent only once
+        let pagesFired = [] // Accumulating pages names to make sure we don't sent the same page twice
         JFCustomWidget.subscribe("ready", function(event){
-            if (fired < 1) {
+            widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
+            if (!pagesFired.includes(widgetSettings.page)) {
                 console.log('Jotform Widget is ready')
-                widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
                 console.log('Event data is: ', event)
                 console.log('formName is: ', widgetSettings.formName)
                 console.log('Page is: ', widgetSettings.page)
@@ -29,8 +29,8 @@
                 }, 
                 // 'https://ent-nts.ca');
                 '*'); //REMOVE THIS FOR PROD
-                fired += 1
-                debugger
+                pagesFired.push(widgetSettings.page)
+                console.log('Pages fired: ', pagesFired)
             };
 
             
