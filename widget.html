@@ -14,7 +14,6 @@
         </div>
     <script type="text/javascript">
         // Widget code that should fire when the widget is ready
-        pagesFired = []; // Accumulating page names in global context to make sure we don't send the same page twice
         JFCustomWidget.subscribe("ready", function(event){
             widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
             if (!pagesFired.includes(widgetSettings.page)) {
@@ -29,8 +28,6 @@
                 }, 
                 // 'https://ent-nts.ca');
                 '*'); //REMOVE THIS FOR PROD
-                pagesFired.push(widgetSettings.page)
-                console.log('Pages fired: ', pagesFired)
             };
 
             
