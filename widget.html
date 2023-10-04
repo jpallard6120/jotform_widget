@@ -30,15 +30,19 @@
                 '*'); //REMOVE THIS FOR PROD
             window.addEventListener('message', (event) => {
                 console.log('Received message within widget:', event);
+                let dataType = {};
+                let dataMethod = {};
                 try {                
-                    const dataType = JSON.parse(event.data).type
-                    const dataMethod = JSON.parse(event.data).method
+                    dataType = JSON.parse(event.data).type
+                    dataMethod = JSON.parse(event.data).method
                 } catch (error) {
                     console.error('Failed to parse JSON:', error.message);
                     return
                 }
-                typeof(dataType) != 'undefined' && console.log('data type: ', dataType) // Should be submit
-                typeof(dataMethod) != 'undefined' && console.log('data method: ', dataMethod) // Should be undefined - new pages have a method of "next". 
+                
+                console.log('data type: ', dataType) // Should be submit
+                console.log('data method: ', dataMethod) // Should be undefined - new pages have a method of "next". 
+
                 if (event.origin == 'https://form.jotform.com' && dataType == 'submit' && typeof(dataMethod) == 'undefined') {
                     console.log('TRUE SUBMIT EVENT WOW')
                     console.log('event is: ', event)
