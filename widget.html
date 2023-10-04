@@ -30,8 +30,8 @@
                 '*'); //REMOVE THIS FOR PROD
             window.addEventListener('message', (event) => {
                 console.log('Received message within widget:', event);
-                const dataType = JSON.parse(temp1.data).type
-                const dataMethod = JSON.parse(temp1.data).method
+                const dataType = JSON.parse(event.data).type
+                const dataMethod = JSON.parse(event.data).method
                 console.log('data type: ', dataType) // Should be submit
                 console.log('data method: ', dataMethod) // Should be undefined - new pages have a method of "next". 
                 debugger
