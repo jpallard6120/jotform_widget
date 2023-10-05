@@ -21,7 +21,8 @@ window.addEventListener('message', (event) => {
         } else if (event.data.event_name == 'form_completed') {
             const pushedData = {
                 event: event.data.event_name,
-                formName: event.data.formName
+                formName: event.data.formName,
+                page: undefined
             }
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push(pushedData);
