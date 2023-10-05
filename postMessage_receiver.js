@@ -19,10 +19,12 @@ window.addEventListener('message', (event) => {
                 formName: event.data.formName,
                 page: event.data.page
             }
+            debugger
             // Make sure we haven't pushed this event before
             if (!objectExists(pushedEvents, pushedData)) {
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push(pushedData);
+                debugger
                 pushedEvents.push(pushedData)
             }
         }
