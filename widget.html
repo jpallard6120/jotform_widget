@@ -17,20 +17,16 @@
         JFCustomWidget.subscribe("ready", function(event){
             widgetSettings = JFCustomWidget.getWidgetSettings(); // Needs to be available globally
                 console.log('Jotform Widget is ready')
-                console.log('Event data is: ', event)
-                console.log('formName is: ', widgetSettings.formName)
-                console.log('Page is: ', widgetSettings.page)
                 window.top.postMessage({
                     'event_name': 'form_page_visible',
                     'formName': widgetSettings.formName,
                     'page': widgetSettings.page
                 }, 
-                // 'https://ent-nts.ca');
-                '*'); //REMOVE THIS FOR PROD
+                'https://ent-nts.ca');
 
             // Listening for messages sent to the widget context but not available in the top window
             window.addEventListener('message', (event) => {
-                console.log('Received message within widget:', event);
+                // console.log('Received message within widget:', event);
                 let dataType = {};
                 let dataMethod = {};
                 try {                
@@ -43,15 +39,13 @@
 
                 // Sending the message to the top window
                 if (event.origin == 'https://form.jotform.com' && dataType == 'submit' && typeof(dataMethod) == 'undefined') {
-                    console.log('TRUE SUBMIT EVENT WOW')
-                    console.log('event is: ', event)
+                    // console.log('Submit event is: ', event)
                     window.top.postMessage({
                         'event_name': 'form_submitted',
                         'formName': widgetSettings.formName,
                         'page': widgetSettings.page
                     }, 
-                // 'https://ent-nts.ca');
-                '*'); //REMOVE THIS FOR PROD
+                'https://ent-nts.ca');
                 };
             });
         });
