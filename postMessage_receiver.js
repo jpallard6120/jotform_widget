@@ -1,14 +1,6 @@
-// Function to test for object existence
-function objectExists(arr, obj) {
-    return arr.some(item => {
-        return Object.keys(obj).every(key => obj[key] === item[key]) && 
-               Object.keys(item).length === Object.keys(obj).length;
-    });
-}
-
 // Listening to widget page messages
 const allowedOrigins = ['https://form.jotform.com', 'https://widgets.jotform.io', 'https://jotform-widget.pages.dev'];
-let pushedEvents = []; // Accumulating pushed events to make sure we don't send one twice. 
+let pushedPages = []; // Accumulating pushed pages to make sure we don't send one twice. 
 window.addEventListener('message', (event) => {
     // Check if the origin is one of the allowed origins
     if (allowedOrigins.includes(event.origin)) {
@@ -19,12 +11,12 @@ window.addEventListener('message', (event) => {
                 formName: event.data.formName,
                 page: event.data.page
             }
-            // Make sure we haven't pushed this event before
-            debugger
-            if (!objectExists(pushedEvents, pushedData)) {
-                pushedEvents.push(pushedData) // This crazily needs to go first, as window.dataLayer.push will add a unique gtm.id to the pushedData object
+            // Make sure we haven't pushed this page before. Initially looked at the whole pushedData object, 
+            // but GTM does weird shenanigans with with it by modifying the object even though it's a const. 
+            if (!pushedPages.includes(event.data.page)) {
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push(pushedData);
+                pushedPages.push(event.data.page);
             }
         }
     }
