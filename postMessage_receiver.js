@@ -5,7 +5,7 @@ window.addEventListener('message', (event) => {
     // Check if the origin is one of the allowed origins
     if (allowedOrigins.includes(event.origin)) {
         // Check if the event name is the one we want
-        if (event.data.event_name == 'form_page_visible' || event.data.event_name == 'form_submitted') {
+        if (event.data.event_name == 'form_page_visible') {
             const pushedData = {
                 event: event.data.event_name,
                 formName: event.data.formName,
@@ -13,13 +13,18 @@ window.addEventListener('message', (event) => {
             }
             // Make sure we haven't pushed this page before. Initially looked at the whole pushedData object, 
             // but GTM does weird shenanigans with with it by modifying the object even though it's a const.
-            debugger
             if (!pushedPages.includes(event.data.page)) {
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push(pushedData);
                 pushedPages.push(event.data.page);
-                debugger
             }
+        } else if (event.data.event_name == 'form_submitted') {
+            const pushedData = {
+                event: event.data.event_name,
+                formName: event.data.formName
+            }
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(pushedData);
         }
     }
 }, false);
