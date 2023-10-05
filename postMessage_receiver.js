@@ -20,11 +20,11 @@ window.addEventListener('message', (event) => {
                 page: event.data.page
             }
             // Make sure we haven't pushed this event before
+            debugger
             if (!objectExists(pushedEvents, pushedData)) {
                 pushedEvents.push(pushedData) // This crazily needs to go first, as window.dataLayer.push will add a unique gtm.id to the pushedData object
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push(pushedData);
-               
             }
         }
     }
