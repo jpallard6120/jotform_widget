@@ -41,7 +41,7 @@
                 if (event.origin == 'https://form.jotform.com' && dataType == 'submit' && typeof(dataMethod) == 'undefined') {
                     // console.log('Submit event is: ', event)
                     window.top.postMessage({
-                        'event_name': 'form_submitted',
+                        'event_name': 'form_completed',
                         'formName': widgetSettings.formName,
                         'page': widgetSettings.page
                     }, 

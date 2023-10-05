@@ -7,7 +7,7 @@ window.addEventListener('message', (event) => {
         // Check if the event name is the one we want
         if (event.data.event_name == 'form_page_visible') {
             const pushedData = {
-                event: event.data.event_name,
+                event: 'form_interaction', //Changing name to comply with GA4 naming convention in tracking plan
                 formName: event.data.formName,
                 page: event.data.page
             }
@@ -18,7 +18,7 @@ window.addEventListener('message', (event) => {
                 window.dataLayer.push(pushedData);
                 pushedPages.push(event.data.page);
             }
-        } else if (event.data.event_name == 'form_submitted') {
+        } else if (event.data.event_name == 'form_completed') {
             const pushedData = {
                 event: event.data.event_name,
                 formName: event.data.formName
