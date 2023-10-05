@@ -12,11 +12,13 @@ window.addEventListener('message', (event) => {
                 page: event.data.page
             }
             // Make sure we haven't pushed this page before. Initially looked at the whole pushedData object, 
-            // but GTM does weird shenanigans with with it by modifying the object even though it's a const. 
+            // but GTM does weird shenanigans with with it by modifying the object even though it's a const.
+            debugger
             if (!pushedPages.includes(event.data.page)) {
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push(pushedData);
                 pushedPages.push(event.data.page);
+                debugger
             }
         }
     }
