@@ -6,8 +6,8 @@ window.addEventListener('message', (event) => {
     if (allowedOrigins.includes(event.origin)) {
         // Check if the event name is the one we want
         if (event.data.event_name == 'form_page_visible') {
-            console.log('form_interaction')
-            console.log('Event is: ', event)
+            // console.log('form_interaction')
+            // console.log('Event is: ', event)
             const pushedData = {
                 event: 'form_interaction', //Changing name to comply with GA4 naming convention in tracking plan
                 formName: event.data.formName,
@@ -20,16 +20,16 @@ window.addEventListener('message', (event) => {
                 window.dataLayer.push(pushedData);
                 pushedPages.push(event.data.page);
             }
-        // } else if (event.data.event_name == 'form_completed') {
-        //     console.log('form_completed')
-        //     console.log('Event is: ', event)
-        //     const pushedData = {
-        //         event: event.data.event_name,
-        //         formName: event.data.formName,
-        //         page: undefined
-        //     }
-        //     window.dataLayer = window.dataLayer || [];
-        //     window.dataLayer.push(pushedData);
-        // }
+        } else if (event.data.event_name == 'form_completed') {
+            // console.log('form_completed')
+            // console.log('Event is: ', event)
+            const pushedData = {
+                event: event.data.event_name,
+                formName: event.data.formName,
+                page: undefined
+            }
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(pushedData);
+        }
     }
 }, false);
