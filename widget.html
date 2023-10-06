@@ -23,7 +23,8 @@
                     'formName': widgetSettings.formName,
                     'page': widgetSettings.page
                 }, 
-                'https://ent-nts.ca');
+                // 'https://ent-nts.ca');
+                '*');
             }, 250); // Need to add a delay because event is sent before GA4 config is loaded
 
             // Listening for messages sent to the widget context but not available in the top window
@@ -46,7 +47,8 @@
                         'event_name': 'form_completed',
                         'formName': widgetSettings.formName
                     }, 
-                'https://ent-nts.ca');
+                //'https://ent-nts.ca');
+                '*');
                 };
             });
         });
